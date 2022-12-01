@@ -2,7 +2,7 @@ package lesson1;
 
 import java.sql.*;
 
-public class main {
+public class Main {
     public static void main(String[] args) throws SQLException {
         try {//flaw 1: checked exceptions
             Connection connection = DriverManager.getConnection("jdbc:h2:mem:test","sa","");

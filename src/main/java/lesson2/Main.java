@@ -8,13 +8,13 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         DataSource dataSource = context.getBean(DataSource.class);
         JdbcTemplate template = new JdbcTemplate(dataSource);
         template.execute("CREATE TABLE Customer(id integer, name VARCHAR(100))");
-        template.update("INSERT INTO Customer VALUES (1, 'Laura')");
+        template.execute("INSERT INTO Customer VALUES (1, 'Laura')");
         Boolean ok = template.execute((StatementCallback<Boolean>) stmt -> {
             stmt.execute("INSERT INTO Customer VALUES (2, 'Jack')");
             //Statement is from "java.sql" package
